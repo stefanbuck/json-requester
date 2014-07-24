@@ -13,10 +13,10 @@ var jsonRequester = require('../');
 var options = {
   uri: 'http://isaacs.iriscouch.com/registry/_all_docs?include_docs=true&limit=10',
   jsonStreamPath: 'rows.*.doc',
-  filter: ['name', 'versions']
+  filter: ['name', 'license']
 };
 
-var req = jsonRequester(options, function(err, data) {
+jsonRequester(options, function(err, data) {
   if(err) {
     console.log(err);
     return;
