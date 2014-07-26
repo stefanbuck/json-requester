@@ -1,7 +1,7 @@
 {
   "name": "json-requester",
   "description": "A wrapper library to interact with JSON APIs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/stefanbuck/json-requester",
   "bugs": "https://github.com/stefanbuck/json-requester/issues",
   "license": "MIT",

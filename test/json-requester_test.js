@@ -56,4 +56,21 @@ describe('jsonRequester', function () {
     });
   });
 
+  it('call transformer', function(cb) {
+    var options = {
+      uri: 'response.json',
+      transformer: function(item) {
+        item.newProp = 'a new property';
+        item.name = 'prefix-' + item.name;
+        return item;
+      }
+    };
+    jsonRequester(options, function(err, result) {
+      request.get.called.should.be.true;
+      var firstItem = result[0];
+      firstItem.name.should.equal('prefix-in-viewport');
+      Object.keys(firstItem).should.have.a.lengthOf(9);
+      cb(err);
+    });
+  });
 });

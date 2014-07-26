@@ -13,11 +13,17 @@ var jsonRequester = require('../');
 var options = {
   uri: 'http://isaacs.iriscouch.com/registry/_all_docs?include_docs=true&limit=10',
   jsonStreamPath: 'rows.*.doc',
-  filter: ['name', 'license']
+  filter: ['name', 'description'],
+  transformer: function(item) {
+    if (item.description) {
+      item.description = item.description.slice(0, 30) + ' ...';
+    }
+    return item;
+  }
 };
 
 jsonRequester(options, function(err, data) {
-  if(err) {
+  if (err) {
     console.log(err);
     return;
   }
